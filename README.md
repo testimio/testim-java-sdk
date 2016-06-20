@@ -28,7 +28,7 @@
 
 ### Testim Options
 
-```
+```java
 import io.testim.sdk.Testim;
 import io.testim.sdk.TestimOptions;
 
@@ -43,7 +43,7 @@ Testim testim = new Testim(options);
 
 ### Run Label
 
-```
+```java
 import io.testim.sdk.model.TestimResults;
 
 TestimResults results = testim.runLabel("<YOUR LABEL>");
@@ -51,7 +51,7 @@ TestimResults results = testim.runLabel("<YOUR LABEL>");
 
 ### Run Test
 
-```
+```java
 import io.testim.sdk.model.TestimResults;
 
 TestimResults results = testim.runTestId("<YOUR TEST ID>");
@@ -59,7 +59,7 @@ TestimResults results = testim.runTestId("<YOUR TEST ID>");
 
 ### Testim Results
 
-```
+```java
 results.getSuccess(); //return true\false
 Map<String, TestData> tests = results.getTests(); //return map of testId, test data
 ```
