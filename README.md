@@ -3,7 +3,7 @@
 ## Requirements
 
 * NodeJS >= 4.0.0
-* Testim Cli
+* [Testim Cli](https://www.npmjs.com/package/@testim/testim-cli)
   ```
   $ npm install -g @testim/testim-cli
   ```
@@ -11,13 +11,11 @@
 ## Installation
 
 ```
-<repositories>
-	<repository>
-		<id>bintray-info-maven</id>
-		<name>bintray</name>
-		<url>http://dl.bintray.com/info/maven</url>
-	</repository>
-</repositories>
+<repository>
+  <id>bintray-info-maven</id>
+  <name>bintray</name>
+  <url>http://dl.bintray.com/info/maven</url>
+</repository>
 
 <dependency>
   <groupId>io.testim</groupId>
