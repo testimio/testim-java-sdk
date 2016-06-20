@@ -11,6 +11,14 @@
 ## Installation
 
 ```
+<repositories>
+	<repository>
+		<id>bintray-info-maven</id>
+		<name>bintray</name>
+		<url>http://dl.bintray.com/info/maven</url>
+	</repository>
+</repositories>
+
 <dependency>
   <groupId>io.testim</groupId>
   <artifactId>testim-java-sdk</artifactId>
