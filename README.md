@@ -23,6 +23,9 @@
 ### Testim Options
 
 ```
+import io.testim.sdk.Testim;
+import io.testim.sdk.TestimOptions;
+
 String token = "<YOUR ACCESS TOKEN>";
 String projectId = "<YOUR PROJECT ID>";
 String gridHost = "<SELENIUM GRID HOST, e.g. 127.0.0.1>";
@@ -35,12 +38,16 @@ Testim testim = new Testim(options);
 ### Run Label
 
 ```
+import io.testim.sdk.model.TestimResults;
+
 TestimResults results = testim.runLabel("<YOUR LABEL>");
 ```
 
 ### Run Test
 
 ```
+import io.testim.sdk.model.TestimResults;
+
 TestimResults results = testim.runTestId("<YOUR TEST ID>");
 ```
 
