@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.testim.sdk.Testim;
@@ -22,8 +23,9 @@ public class TestimConfigFileExample {
 		TestimOptions options = new TestimOptions(configFile);
 		TESTIM = new Testim(options, "/usr/local/bin/testim", "/usr/local/bin/node");
 	}
-// dd
+
 	@Test
+	@Ignore
 	public void testimExampleLabels() throws TestimException {
 
 		TestimResults results = TESTIM.runLabel("debug");

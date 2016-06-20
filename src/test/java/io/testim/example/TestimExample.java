@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.testim.sdk.Testim;
@@ -28,6 +29,7 @@ public class TestimExample {
 	}
 
 	@Test
+	@Ignore
 	public void testimExampleLabels() throws TestimException {
 
 		TestimResults results = TESTIM.runLabel("debug");
