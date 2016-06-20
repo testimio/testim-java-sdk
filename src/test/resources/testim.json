@@ -1,0 +1,6 @@
+{
+  "projectId": "<YOUR PROJECT ID>",
+  "token": "<YOUR ACCESS TOKEN>",
+  "gridHost": "<SELENIUM GRID HOST, e.g. 127.0.0.1>",
+  "gridPort": <SELENIUM GRID PORT, e.g. 4444>
+}
