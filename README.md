@@ -20,7 +20,7 @@
 <dependency>
   <groupId>io.testim</groupId>
   <artifactId>testim-java-sdk</artifactId>
-  <version>0.0.1</version>
+  <version>0.2.0</version>
 </dependency>
 ```
   
@@ -42,6 +42,21 @@ TestimOptions options = new TestimOptions(token, projectId, gridHost, gridPort);
 Testim testim = new Testim(options);
 
 TestimResults results = testim.runLabel("sanity");
+```
+
+#### Throw Exception On Test Failed
+```java
+
+TestimOptions options = new TestimOptions(token, projectId, gridHost, gridPort);
+options.setThrowExceptionOnFail(true);
+Testim testim = new Testim(options);
+
+try {
+  TestimResults results = testim.runLabel("sanity");
+} catch (TestimTestResultException e) {
+  Assert.fail(e.toString());
+}
+
 ```
 
 ### Run Test Suite By Label
