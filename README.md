@@ -3,7 +3,7 @@
 ## Requirements
 
 * NodeJS >= 4.0.0
-* Testim Cli
+* [Testim Cli](https://www.npmjs.com/package/@testim/testim-cli)
   ```
   $ npm install -g @testim/testim-cli
   ```
@@ -11,6 +11,12 @@
 ## Installation
 
 ```
+<repository>
+  <id>bintray-info-maven</id>
+  <name>bintray</name>
+  <url>http://dl.bintray.com/info/maven</url>
+</repository>
+
 <dependency>
   <groupId>io.testim</groupId>
   <artifactId>testim-java-sdk</artifactId>
@@ -22,9 +28,10 @@
 
 ### Testim Options
 
-```
+```java
 import io.testim.sdk.Testim;
 import io.testim.sdk.TestimOptions;
+import io.testim.sdk.model.TestimResults;
 
 String token = "<YOUR ACCESS TOKEN>";
 String projectId = "<YOUR PROJECT ID>";
@@ -33,27 +40,28 @@ int gridPort = <SELENIUM GRID PORT, e.g. 4444>;
 
 TestimOptions options = new TestimOptions(token, projectId, gridHost, gridPort);
 Testim testim = new Testim(options);
+
+TestimResults results = testim.runLabel("sanity");
 ```
 
-### Run Label
+### Run Test Suite By Label
 
-```
-import io.testim.sdk.model.TestimResults;
-
+```java
 TestimResults results = testim.runLabel("<YOUR LABEL>");
 ```
 
-### Run Test
+### Run Single Test
 
-```
-import io.testim.sdk.model.TestimResults;
-
+```java
 TestimResults results = testim.runTestId("<YOUR TEST ID>");
 ```
 
 ### Testim Results
 
-```
-results.getSuccess(); //return true\false
-Map<String, TestData> tests = results.getTests(); //return map of testId, test data
-```
+| Member        | Type        | Description                           |
+| ------------- |-----------| -------------------------------------|
+| startTime     | Long        | Run start time (ms)                |
+| endTime       | Long        | Run end time (ms)                  |
+| duration      | Long        | Run duration (ms)                  |
+| success       | Boolean     | Run success                        | 
+| tests         | Map         | Map tests results \<testId, test data\> |
