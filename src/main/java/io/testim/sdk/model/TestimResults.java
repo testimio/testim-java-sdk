@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 
 import io.testim.sdk.JSONUtils;
 import io.testim.sdk.TestimException;
+import io.testim.sdk.TestimTestResultException;
 
 public class TestimResults {
 
@@ -130,7 +131,7 @@ public class TestimResults {
 				+ ", port=" + port + ", baseUrl=" + baseUrl + ", tests=" + tests + ", exitCode=" + exitCode + "]";
 	}
 
-	public static void buildTestResults(final TestimResults results, String jsonString) throws TestimException {
+	public static void buildTestResults(final TestimResults results, String jsonString, boolean throwExceptionOnFail) throws TestimException, TestimTestResultException {
 		Type type = null;
 		BaseModel<?> o = JSONUtils.parseStringJson(jsonString, BaseModel.class);
 		switch (o.getName()) {
@@ -147,7 +148,11 @@ public class TestimResults {
 			type = new TypeToken<BaseModel<TestStartedFinishedModel>>() {
 			}.getType();
 			BaseModel<TestStartedFinishedModel> o4 = JSONUtils.parseStringJson(jsonString, type);
-			results.addTest(o4.getData().getTest());
+			TestData data = o4.getData().getTest();
+			results.addTest(data);
+			if(data.getSuccess() != null && !data.getSuccess() && throwExceptionOnFail){
+				throw new TestimTestResultException(data.getTestId(), data.getResultId(), data.getFailureReason());
+			}
 			break;
 		case "suiteFinished":
 			results.setEndTime(System.currentTimeMillis());

@@ -8,6 +8,7 @@ import org.apache.commons.io.FileUtils;
 
 public class TestimOptions {
 
+	private boolean throwExceptionOnFail = false;
 	private String token = "";
 	private String projectId = "";
 	private String gridHost = "";
@@ -105,6 +106,14 @@ public class TestimOptions {
 
 	public void setSauceLabsKey(String sauceLabsKey) {
 		this.sauceLabsKey = sauceLabsKey;
+	}
+
+	public boolean isThrowExceptionOnFail() {
+		return throwExceptionOnFail;
+	}
+
+	public void setThrowExceptionOnFail(boolean throwExceptionOnFail) {
+		this.throwExceptionOnFail = throwExceptionOnFail;
 	}
 
 }

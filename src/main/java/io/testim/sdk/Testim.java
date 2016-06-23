@@ -35,7 +35,7 @@ public class Testim {
 		this.nodeLocation = nodeLocation;
 	}
 
-	public TestimResults runLabel(String... labels) throws TestimException {
+	public TestimResults runLabel(String... labels) throws TestimException, TestimTestResultException {
 		ArrayList<String> cmdOptions = buildOptions(options);
 		for (String label : labels) {
 			cmdOptions.add("--label");
@@ -44,7 +44,7 @@ public class Testim {
 		return run(cmdOptions);
 	}
 
-	public TestimResults runTestId(String... testIds) throws TestimException {
+	public TestimResults runTestId(String... testIds) throws TestimException, TestimTestResultException {
 		ArrayList<String> cmdOptions = buildOptions(options);
 		for (String testId : testIds) {
 			cmdOptions.add("--testId");
@@ -80,7 +80,7 @@ public class Testim {
 		return cmdOptions;
 	}
 
-	private TestimResults run(ArrayList<String> cmdOptions) throws TestimException {
+	private TestimResults run(ArrayList<String> cmdOptions) throws TestimException, TestimTestResultException {
 		ProcessBuilder builder = new ProcessBuilder();
 		builder.command(cmdOptions);
 		BufferedReader stdInput = null;
@@ -91,13 +91,15 @@ public class Testim {
 			String s = null;
 			while ((s = stdInput.readLine()) != null) {
 				if (JSONUtils.isStringJSONValid(s)) {
-					TestimResults.buildTestResults(testimResults, s);
+					TestimResults.buildTestResults(testimResults, s, this.options.isThrowExceptionOnFail());
 				}
 			}
 
 			int exitValue = proc.waitFor();
 			testimResults.setExitCode(exitValue);
 			return testimResults;
+		} catch(TestimTestResultException e){
+			throw e;
 		} catch (Exception e) {
 			throw new TestimException(e.getMessage());
 		} finally {
