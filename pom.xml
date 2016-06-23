@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.testim</groupId>
 	<artifactId>testim-java-sdk</artifactId>
-	<version>0.2.0</version>
+	<version>0.3.0-SNAPSHOT</version>
 
 	<name>Testim JAVA SDK</name>
 	<description>Testim java sdk to run testim tests</description>
@@ -10,7 +10,7 @@
 
 	<scm>
 		<connection>scm:git:https://github.com/testimio/testim-java-sdk.git</connection>
-		<tag>v0.2.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<properties>
