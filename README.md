@@ -1,14 +1,15 @@
-# Introduction
+# Overview
+The Testim Java SDK is a wrapper around the Testim CLI. It allows to integrate testim in a Java heavy test environment - TestNG, Junit, JSystem, etc. So Testim can be incorportaed before/after/around a flow that was coded specifically for your application enviroment. 
 
 ## Requirements
 
-* NodeJS >= 4.0.0
+* [NodeJS >= 4.0.0](https://nodejs.org/en/download/)
 * [Testim Cli](https://www.npmjs.com/package/@testim/testim-cli)
   ```
   $ npm install -g @testim/testim-cli
   ```
   
-## Installation
+## Installation Maven
 
 ```
 <repository>
